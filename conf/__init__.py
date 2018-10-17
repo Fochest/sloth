@@ -12,7 +12,6 @@ class Config:
         for setting in dir(default_config):
             if setting == setting.upper():
                 setattr(self, setting, getattr(default_config, setting))
-        print(codesupply_config.LABELS)
 
     def update(self, module_path):
         try:
