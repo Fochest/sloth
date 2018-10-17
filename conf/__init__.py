@@ -1,17 +1,17 @@
 import os
 import sys
 import importlib
-from sloth.conf import default_config
 from sloth.conf import codesupply_config
 
 
 class Config:
     def __init__(self):
-        # init the configuration with the default config
-        for setting in dir(default_config):
-            if setting == setting.upper():
-                setattr(self, setting, getattr(default_config, setting))
         codesupply_config.loadlabelgroup('dsgvo')
+        # init the configuration with the default config
+        for setting in dir(codesupply_config):
+            if setting == setting.upper():
+                setattr(self, setting, getattr(codesupply_config, setting))
+        
         
     def update(self, module_path):
         try:

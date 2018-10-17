@@ -1,15 +1,15 @@
 import requests
 import json
-from sloth.conf.default_config import LABELS
 
 def loadlabelgroup(labelgroup):
     response = requests.get('http://gitlab.codesupply.de:8082/api/labelgroups/'+labelgroup)
     data = response.json()
+    global LABELS
     l = []
     for label in data["labels"]:
         attribute = {}
         name = label['name']
-        attribute['class'] = 'rect'
+        attribute['class'] = label['name']
         labelJson = {}
         labelJson['attributes'] = attribute
         labelJson['inserter'] = 'sloth.items.RectItemInserter'
@@ -18,8 +18,7 @@ def loadlabelgroup(labelgroup):
         labelJson['hotkey'] = label['hotkey']
         labelJson['text'] = label['name']
         l.append(labelJson)
-    MYLABELS = tuple(l)
-    LABELS += MYLABELS
+    LABELS = tuple(l)
 
 # This is sloth's default configuration.
 #
