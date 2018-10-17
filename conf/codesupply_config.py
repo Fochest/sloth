@@ -1,8 +1,8 @@
 import requests
 import json
+from default_config import LABELS
 
 def loadlabelgroup(labelgroup):
-    global LABELS
     response = requests.get('http://gitlab.codesupply.de:8082/api/labelgroups/'+labelgroup)
     data = response.json()
     l = []
