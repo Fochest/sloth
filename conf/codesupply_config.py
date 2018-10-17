@@ -2,7 +2,7 @@ import requests
 import json
 
 def loadlabelgroup(labelgroup):
-    global MYLABELS
+    global LABELS
     response = requests.get('http://gitlab.codesupply.de:8082/api/labelgroups/'+labelgroup)
     data = response.json()
     l = []
