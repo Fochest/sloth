@@ -2,7 +2,7 @@ import requests
 import json
 
 def loadlabelgroup(labelgroup):
-    global LABELS
+    global MYLABELS
     response = requests.get('http://gitlab.codesupply.de:8082/api/labelgroups/'+labelgroup)
     data = response.json()
     l = []
@@ -18,7 +18,8 @@ def loadlabelgroup(labelgroup):
         labelJson['hotkey'] = label['hotkey']
         labelJson['text'] = label['name']
         l.append(labelJson)
-    LABELS = tuple(l)
+    MYLABELS = tuple(l)
+    LABELS += MYLABELS
 
 # This is sloth's default configuration.
 #
