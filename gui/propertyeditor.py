@@ -343,8 +343,8 @@ class PropertyEditor(QWidget):
         if 'class' not in attrs:
             raise ImproperlyConfigured("Labels must have an attribute 'class'")
         label_class = attrs['class']
-        #if label_class in self._class_config:
-        #    raise ImproperlyConfigured("Label with class '%s' defined more than once" % label_class)
+        if label_class in self._class_config:
+            raise ImproperlyConfigured("Label with class '%s' defined more than once" % label_class)
 
         # Store config
         self._class_config[label_class] = label_config
