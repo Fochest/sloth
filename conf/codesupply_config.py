@@ -14,6 +14,7 @@ def loadlabelgroup(labelgroup):
         labelJson['attributes'] = attribute
         labelJson['inserter'] = 'sloth.items.RectItemInserter'
         labelJson['item'] = 'sloth.items.RectItem'
+        labelJson['type'] = label['name']
         labelJson['hotkey'] = label['hotkey']
         labelJson['text'] = label['name']
         l.append(labelJson)
