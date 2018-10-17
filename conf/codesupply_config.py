@@ -19,7 +19,7 @@ def loadlabelgroup(labelgroup):
         labelJson['text'] = label['name']
         l.append(labelJson)
     MYLABELS = tuple(l)
-    default_config.LABELS += MYLABELS
+    LABELS += MYLABELS
 
 # This is sloth's default configuration.
 #
