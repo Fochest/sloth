@@ -1,6 +1,6 @@
 import requests
 import json
-import sloth.conf.default_config
+from sloth.conf.default_config import LABELS
 
 def loadlabelgroup(labelgroup):
     response = requests.get('http://gitlab.codesupply.de:8082/api/labelgroups/'+labelgroup)
