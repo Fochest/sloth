@@ -6,7 +6,7 @@ from sloth.conf import codesupply_config
 
 class Config:
     def __init__(self):
-        codesupply_config.loadlabelgroup('dsgvo')
+        codesupply_config.loadlabelgroup('dashcam')
         # init the configuration with the default config
         for setting in dir(codesupply_config):
             if setting == setting.upper():
