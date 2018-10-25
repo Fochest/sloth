@@ -314,8 +314,9 @@ class LabelServiceContainer(AnnotationContainer):
         Overwritten to write JSON files.
         """
         jsonstring = json.dumps(annotations, sort_keys=True, indent=4, separators=(',', ': '))
-        print(jsonstring)
-        r = requests.post('http://gitlab.codesupply.de:8082/api/pictures/addlabels', json=jsonstring)
+        url = "http://gitlab.codesupply.de:8082/api/pictures/addlabels"
+        headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
+        r = requests.post(url, data=jsonstring, headers=headers)
         print (r.status_code)
         f = open(fname, "w")
         json.dump(annotations, f, indent=4, separators=(',', ': '), sort_keys=True)
