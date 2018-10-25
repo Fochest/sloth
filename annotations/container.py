@@ -317,6 +317,7 @@ class LabelServiceContainer(AnnotationContainer):
         url = "http://gitlab.codesupply.de:8082/api/pictures/addlabels"
         headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
         r = requests.post(url, data=jsonstring, headers=headers)
+        print (r)
         print (r.status_code)
         f = open(fname, "w")
         json.dump(annotations, f, indent=4, separators=(',', ': '), sort_keys=True)
