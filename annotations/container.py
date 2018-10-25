@@ -8,6 +8,8 @@ from sloth.core.utils import import_callable
 import logging
 LOG = logging.getLogger(__name__)
 
+import requests
+
 try:
     import cPickle as pickle
 except ImportError:
@@ -294,6 +296,29 @@ class OkapiAnnotationContainer(AnnotationContainer):
 
         container.WriteToFile(fname)
 
+
+class LabelServiceContainer(AnnotationContainer):
+    """
+    Simple container which writes the annotations to disk in JSON format.
+    """
+
+    def parseFromFile(self, fname):
+        """
+        Overwritten to read JSON files.
+        """
+        f = open(fname, "r")
+        return json.load(f)
+
+    def serializeToFile(self, fname, annotations):
+        """
+        Overwritten to write JSON files.
+        """
+        jsonstring = json.dump(annotations, indent=4, separators=(',', ': '), sort_keys=True)
+        r = requests.post('http://gitlab.codesupply.de:8082/api/pictures/addlabels', json=jsonstring)
+        print r.status_code
+        f = open(fname, "w")
+        json.dump(annotations, f, indent=4, separators=(',', ': '), sort_keys=True)
+        f.write("\n")
 
 class JsonContainer(AnnotationContainer):
     """

@@ -108,6 +108,7 @@ HOTKEYS = (
 # class implementing the sloth container interface, or a module path pointing
 # to such a class.
 CONTAINERS = (
+    ('*.service',       'sloth.annotations.container.LabelServiceContainer'),
     ('*.json',       'sloth.annotations.container.JsonContainer'),
     ('*.msgpack',    'sloth.annotations.container.MsgpackContainer'),
     ('*.yaml',       'sloth.annotations.container.YamlContainer'),
